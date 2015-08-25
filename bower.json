@@ -1,0 +1,16 @@
+{
+  "name": "rogocode",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.4.*",
+    "angular-touch": "~1.4.*",
+    "angular-ui-router": "~0.2.10",
+    "angular-material": "~0.10.0",
+    "font-awesome": "~4.2.0",
+    "angular-messages": "~1.4.4",
+    "angularfire": "~1.1.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.*"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en' data-ng-app='rogocode'>
+  <head>
+    <title>rogocode</title>
+    <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'>
+    <!-- inject:head:js -->
+    <!-- endinject -->
+    <!-- inject:html -->
+    <!-- endinject -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- inject:css -->
+    <!-- endinject -->
+  </head>
+  <body>
+  <div layout="column" layout-fill>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-raised fa fa-navicon">
+        </md-button>
+        <span>RogoCode</span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
+        <md-button class="md-raised">
+          Action Button
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content>
+
+      <div layout="row">
+        <div flex data-ui-view>
+
+        </div>
+        <div flex ng-hide="!anything">
+          <md-button> Flat Button </md-button>
+          <md-button href="http://google.com"> Flat link </md-button>
+          <md-button class="md-raised"> Raised Button </md-button>
+          <md-button ng-disabled="true"> Disabled Button </md-button>
+          <md-button>
+            <md-icon md-svg-src="your/icon.svg"></md-icon>
+            Register Now
+          </md-button>
+        </div>
+
+      </div>
+
+
+    </md-content>
+  </div>
+
+
+
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- inject:js -->
+    <!-- endinject -->
+  </body>
+</html>
