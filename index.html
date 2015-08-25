@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en' data-ng-app='rogocode'>
+  <head>
+    <title>rogocode</title>
+    <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'>
+    <!-- inject:head:js -->
+    <!-- endinject -->
+    <!-- inject:html -->
+    <!-- endinject -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css">
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/home/home.css">
+    <!-- endinject -->
+  </head>
+  <body>
+  <div layout="column" layout-fill>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-raised fa fa-navicon">
+        </md-button>
+        <span>RogoCode</span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
+        <md-button class="md-raised">
+          Action Button
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content>
+
+      <div layout="row">
+        <div flex data-ui-view>
+
+        </div>
+        <div flex ng-hide="!anything">
+          <md-button> Flat Button </md-button>
+          <md-button href="http://google.com"> Flat link </md-button>
+          <md-button class="md-raised"> Raised Button </md-button>
+          <md-button ng-disabled="true"> Disabled Button </md-button>
+          <md-button>
+            <md-icon md-svg-src="your/icon.svg"></md-icon>
+            Register Now
+          </md-button>
+        </div>
+
+      </div>
+
+
+    </md-content>
+  </div>
+
+
+
+    <!-- bower:js -->
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-touch/angular-touch.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
+    <script src="vendor/angular-aria/angular-aria.js"></script>
+    <script src="vendor/angular-material/angular-material.js"></script>
+    <script src="vendor/angular-messages/angular-messages.js"></script>
+    <script src="vendor/firebase/firebase.js"></script>
+    <script src="vendor/angularfire/dist/angularfire.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="js/home/home-module.js"></script>
+    <script src="js/home/home-routes.js"></script>
+    <script src="js/home/home-controller.js"></script>
+    <script src="js/app-module.js"></script>
+    <script src="js/app-routes.js"></script>
+    <script src="js/api-service.js"></script>
+    <script src="js/components/search/search-directive.js"></script>
+    <script src="js/components/list/list-directive.js"></script>
+    <script src="js/components/admin/admin-directive.js"></script>
+    <script src="js/components/about/about-directive.js"></script>
+    <!-- endinject -->
+  </body>
+</html>
