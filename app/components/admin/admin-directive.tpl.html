@@ -3,7 +3,7 @@
     <md-button ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button></md-subheader>
 <form ng-show="admin.show.add" name="wordForm" ng-submit="admin.add(wordForm); wordForm = {}; wordForm.definitions = [{d:''}]">
     <md-input-container>
-        <label>Word Name</label>
+        <label>Word</label>
         <input ng-model="wordForm.name" md-maxlength="50" minlength="2">
         <!--<div ng-messages="wordForm.lastName.$error" ng-show="wordForm.lastName.$dirty">
             <div ng-message="md-maxlength">That's too long!</div>
