@@ -1,0 +1,37 @@
+<md-subheader>
+    <md-button ng-show="!admin.show.add" ng-click="admin.show.add = !admin.show.add">Add Words</md-button>
+    <md-button ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button></md-subheader>
+<form ng-show="admin.show.add" name="wordForm" ng-submit="admin.add(wordForm); wordForm = {}; wordForm.definitions = [{d:''}]">
+    <md-input-container>
+        <label>Word</label>
+        <input ng-model="wordForm.name" md-maxlength="50" minlength="2">
+        <!--<div ng-messages="wordForm.lastName.$error" ng-show="wordForm.lastName.$dirty">
+            <div ng-message="md-maxlength">That's too long!</div>
+        </div>-->
+    </md-input-container>
+    <h4>Word Definitions</h4>
+    <md-card ng-repeat="def in wordForm.definitions">
+        <md-input-container>
+            <label>Enter Definition {{$index+1}}</label>
+            <textarea ng-model="wordForm.definitions[$index].d" md-maxlength="1200"></textarea>
+            <!--<div ng-messages="wordForm.definitions[$index].$error" ng-show="wordForm.definitions[$index].$dirty">
+                <div ng-message="md-maxlength">That's too long!</div>
+            </div>-->
+        </md-input-container>
+        <div class="row">
+            <md-button ng-if="!$first" class="fa fa-close" ng-click="wordForm.definitions.pop($index)"> Remove</md-button>
+            <md-button ng-if="$last || wordForm.definitions.length===0" ng-click="wordForm.definitions.push({d:''})" class="md-raised"><i class="fa fa-plus-square" > Add Another Definition</i></md-button>
+        </div>
+
+    </md-card>
+    <md-input-container>
+        <md-switch md-no-ink ng-model="wordForm.published" aria-label="Publish">
+            Publish
+        </md-switch>
+    </md-input-container>
+    <button type="submit" class="md-button">Add to Dictionary</button>
+</form>
+<q ng-hide="!programming" ng-if="!definitions"><a ng-init="wordForm.definitions = [{d:''}]"></a></q>
+<div ng-repeat="(key,word) in admin.words.words">
+    <i ng-click="admin.remove(key)">{{key}}</i>: {{word.name}}
+</div>
