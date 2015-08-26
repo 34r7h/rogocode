@@ -1,7 +1,10 @@
+<q ng-show="$root.debug" ng-if="!definitions"><a ng-init="wordForm.definitions = [{d:''}]">{{wordForm.definitions}}</a></q>
 <md-subheader>
     <md-button ng-show="!admin.show.add" ng-click="admin.show.add = !admin.show.add">Add Words</md-button>
-    <md-button ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button></md-subheader>
-<form ng-show="admin.show.add" name="wordForm" ng-submit="admin.add(wordForm); wordForm = {}; wordForm.definitions = [{d:''}]">
+    <md-button ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button>
+</md-subheader>
+<form ng-show="admin.show.add" name="wordForm"
+      ng-submit="admin.add(wordForm); wordForm = {}; wordForm.definitions = [{d:''}]">
     <md-input-container>
         <label>Word</label>
         <input ng-model="wordForm.name" md-maxlength="50" minlength="2">
@@ -10,20 +13,27 @@
         </div>-->
     </md-input-container>
     <h4>Word Definitions</h4>
-    <md-card ng-repeat="def in wordForm.definitions">
-        <md-input-container>
-            <label>Enter Definition {{$index+1}}</label>
-            <textarea ng-model="wordForm.definitions[$index].d" md-maxlength="1200"></textarea>
-            <!--<div ng-messages="wordForm.definitions[$index].$error" ng-show="wordForm.definitions[$index].$dirty">
-                <div ng-message="md-maxlength">That's too long!</div>
-            </div>-->
-        </md-input-container>
-        <div class="row">
-            <md-button ng-if="!$first" class="fa fa-close" ng-click="wordForm.definitions.pop($index)"> Remove</md-button>
-            <md-button ng-if="$last || wordForm.definitions.length===0" ng-click="wordForm.definitions.push({d:''})" class="md-raised"><i class="fa fa-plus-square" > Add Another Definition</i></md-button>
-        </div>
 
-    </md-card>
+    <div ng-repeat="def in wordForm.definitions">
+        <md-card>
+            <md-input-container>
+                <label>Enter Definition {{$index+1}}</label>
+                <textarea ng-model="wordForm.definitions[$index].d" md-maxlength="1200"></textarea>
+                <!--<div ng-messages="wordForm.definitions[$index].$error" ng-show="wordForm.definitions[$index].$dirty">
+                    <div ng-message="md-maxlength">That's too long!</div>
+                </div>-->
+            </md-input-container>
+            <div class="row">
+                <md-button ng-if="!$first" class="fa fa-close" ng-click="wordForm.definitions.pop($index)"> Remove
+                </md-button>
+                <!--
+                            <md-button ng-if="$last || wordForm.definitions.length===0" ng-click="wordForm.definitions.push({d:''})" class="md-raised"><i class="fa fa-plus-square" > Add Another Definition</i></md-button>
+                -->
+            </div>
+        </md-card>
+        <md-button ng-if="$last || wordForm.definitions.length===0" ng-click="wordForm.definitions.push({d:''})"
+                   class="md-raised"><i class="fa fa-plus-square"> Add Another Definition</i></md-button>
+    </div>
     <md-input-container>
         <md-switch md-no-ink ng-model="wordForm.published" aria-label="Publish">
             Publish
@@ -31,7 +41,45 @@
     </md-input-container>
     <button type="submit" class="md-button">Add to Dictionary</button>
 </form>
-<q ng-hide="!programming" ng-if="!definitions"><a ng-init="wordForm.definitions = [{d:''}]"></a></q>
-<div ng-repeat="(key,word) in admin.words.words">
-    <i ng-click="admin.remove(key)">{{key}}</i>: {{word.name}}
-</div>
+<md-input-container>
+    <label>Search Words</label>
+    <input type="text" ng-model="admin.search.name"/>
+</md-input-container>
+
+<md-list>
+    <md-card ng-repeat="word in admin.wordsArray | filter:admin.search">
+        <md-list-item class="md-2-line">
+
+            <div>
+                <md-input-container>
+                    <label>Word Name</label>
+                    <h2><input type="text" ng-model="word.name"/></h2>
+                </md-input-container>
+
+                <div ng-repeat="def in word.definitions">
+                    <md-input-container>
+                        <label>Definition {{$index+1}}</label>
+                        <input type="text" ng-model="def.d"/>
+                    </md-input-container>
+                    <a class="fa fa-close" ng-click="word.definitions.pop($index)">
+                        Remove this definition
+                    </a>
+                    <a ng-if="$first || word.definitions.length===0" ng-click="word.definitions.push({d:''})" class="md-raised">
+                        <i class="fa fa-plus-square"> Add Another Definition</i>
+                    </a>
+                </div>
+                <code>Created on {{word.created}}</code>
+            </div>
+            <div class="row"><md-button>
+                <i class="fa fa-close" ng-click="show.remove = !show.remove" ng-show="!show.remove">Remove Word</i>
+                <i class="fa fa-close" ng-show="show.remove" ng-click="admin.remove(word.$id)">Really Remove Word</i>
+            </md-button>
+            <md-button>
+                <i class="fa fa-close" ng-click="admin.save(word.$id, word)"> Save Changes</i>
+            </md-button></div>
+        </md-list-item>
+        <md-switch ng-model="word.published">
+            Publish
+        </md-switch>
+    </md-card>
+</md-list>

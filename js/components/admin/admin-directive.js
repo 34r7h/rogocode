@@ -21,7 +21,7 @@
    */
   angular.module('rogocode').directive('admin', admin);
 
-  function admin(Api) {
+  function admin(Api, $rootScope) {
     return {
       restrict: 'EA',
       scope: {},
@@ -36,6 +36,14 @@
         vm.add = Api.methods.add;
         vm.remove = Api.methods.remove;
         vm.words = Api.data;
+        vm.wordsArray = Api.wordsArray;
+        vm.save = Api.methods.save;
+        /*
+                $rootScope.action = {
+                  name: 'Save All Changes',
+                  action: Api.methods.saveAll
+                }
+        */
       },
       link: function link(scope, element, attrs) {
         /* jshint unused:false */
