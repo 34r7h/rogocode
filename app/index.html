@@ -21,8 +21,8 @@
         <span>RogoCode</span>
         <!-- fill up the space between left and right area -->
         <span flex></span>
-        <md-button class="md-raised">
-          Action Button
+        <md-button ng-if="$root.action" ng-click="$root.action.action()" class="md-raised">
+          {{$root.action.name}}
         </md-button>
       </div>
     </md-toolbar>
@@ -31,16 +31,6 @@
       <div layout="row">
         <div flex data-ui-view>
 
-        </div>
-        <div flex ng-hide="!anything">
-          <md-button> Flat Button </md-button>
-          <md-button href="http://google.com"> Flat link </md-button>
-          <md-button class="md-raised"> Raised Button </md-button>
-          <md-button ng-disabled="true"> Disabled Button </md-button>
-          <md-button>
-            <md-icon md-svg-src="your/icon.svg"></md-icon>
-            Register Now
-          </md-button>
         </div>
 
       </div>
