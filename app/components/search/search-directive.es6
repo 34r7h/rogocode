@@ -31,7 +31,13 @@
       controller() {
         let vm = this;
         vm.name = 'search';
-        Api.log(vm);
+        vm.words = Api.data;
+        vm.wordsArray = Api.wordsArray;
+        vm.alphabet = [];
+        var reg = 'abcdefghijklmnopqrstuvwxyz';
+        angular.forEach(reg, (letter)=>{
+          vm.alphabet.push(letter);
+        })
       },
       link(scope, element, attrs) {
         /* jshint unused:false */

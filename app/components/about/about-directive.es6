@@ -31,7 +31,9 @@
       controller() {
         let vm = this;
         vm.name = 'about';
-        Api.log(vm);
+        vm.about = Api.about;
+        vm.login = Api.methods.login;
+        vm.logout = Api.methods.logout;
       },
       link(scope, element, attrs) {
         /* jshint unused:false */

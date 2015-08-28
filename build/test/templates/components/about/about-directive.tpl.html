@@ -1,1 +1,19 @@
-<div>{{about.name}}</div>
+<md-card>
+    <h2>About this app</h2>
+    <p>{{about.about.$value}}</p>
+</md-card>
+<md-button ng-click="show.login = !show.login" ng-show="!$root.auth">Click to Sign in</md-button>
+<md-button ng-click="about.logout()" ng-show="$root.auth">Logout</md-button>
+<md-card ng-show="show.login && !$root.auth">
+    <form name="login" ng-submit="about.login(user, pass)">
+        <md-input-container>
+            <label for="email">Email</label>
+            <input id="email" ng-model="user" type="email"/>
+        </md-input-container>
+        <md-input-container>
+            <label for="pass">Password</label>
+            <input id="pass" ng-model="pass" type="password"/>
+        </md-input-container>
+        <button type="submit" class="md-button">Login</button>
+    </form>
+</md-card>

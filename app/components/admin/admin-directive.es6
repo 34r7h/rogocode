@@ -29,8 +29,6 @@
       replace: false,
       controllerAs: 'admin',
       controller() {
-        console.log('Api', Api);
-        console.log('Api.data', Api.data);
         let vm = this;
         vm.name = 'admin';
         vm.add = Api.methods.add;
@@ -38,6 +36,13 @@
         vm.words = Api.data;
         vm.wordsArray = Api.wordsArray;
         vm.save = Api.methods.save;
+        vm.saveAbout = Api.methods.saveAbout;
+        vm.about = Api.about;
+        vm.alphabet = [];
+        var reg = 'abcdefghijklmnopqrstuvwxyz';
+        angular.forEach(reg, (letter)=>{
+          vm.alphabet.push(letter);
+        });
 /*
         $rootScope.action = {
           name: 'Save All Changes',

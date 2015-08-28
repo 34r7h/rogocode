@@ -15,15 +15,11 @@
         url: '/about',
         template: '<about></about>'
       })
-      .state('list', {
-        url: '/list',
-        template: '<list></list>'
-      })
       .state('admin', {
         url: '/admin',
         template: '<admin></admin>'
       });
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/search');
 
   }
 }());

@@ -1,10 +1,16 @@
 <q ng-show="$root.debug" ng-if="!definitions"><a ng-init="wordForm.definitions = [{d:''}]">{{wordForm.definitions}}</a></q>
+<h2>Word Administration</h2>
+<md-input-container>
+    <label>Search Words</label>
+    <input type="text" ng-model="admin.search.name"/>
+</md-input-container>
 <md-subheader>
-    <md-button ng-show="!admin.show.add" ng-click="admin.show.add = !admin.show.add">Add Words</md-button>
-    <md-button ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button>
+    <md-button class="raised" ng-show="!admin.show.add" ng-click="admin.show.add = !admin.show.add">Add Words</md-button>
+    <md-button class="raised" ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button>
 </md-subheader>
 <form ng-show="admin.show.add" name="wordForm"
       ng-submit="admin.add(wordForm); wordForm = {}; wordForm.definitions = [{d:''}]">
+    <h3>Add a new word below and click 'Add to Dictionary'</h3>
     <md-input-container>
         <label>Word</label>
         <input ng-model="wordForm.name" md-maxlength="50" minlength="2">
@@ -41,13 +47,9 @@
     </md-input-container>
     <button type="submit" class="md-button">Add to Dictionary</button>
 </form>
-<md-input-container>
-    <label>Search Words</label>
-    <input type="text" ng-model="admin.search.name"/>
-</md-input-container>
-
+<h3 ng-show="admin.search.name">Edit Words</h3>
 <md-list>
-    <md-card ng-repeat="word in admin.wordsArray | filter:admin.search">
+    <md-card ng-repeat="word in admin.wordsArray | filter:admin.search" ng-if="admin.search" ng-if="admin.search && admin.search.name.length > 0 && (admin.search.name[0] | uppercase) === (word.name[0] | uppercase)">
         <md-list-item class="md-2-line">
 
             <div>
@@ -61,7 +63,7 @@
                         <label>Definition {{$index+1}}</label>
                         <input type="text" ng-model="def.d"/>
                     </md-input-container>
-                    <a class="fa fa-close" ng-click="word.definitions.pop($index)">
+                    <a class="fa fa-close" ng-click="word.definitions.splice($index,1)">
                         Remove this definition
                     </a>
                     <a ng-if="$first || word.definitions.length===0" ng-click="word.definitions.push({d:''})" class="md-raised">
@@ -83,3 +85,11 @@
         </md-switch>
     </md-card>
 </md-list>
+<h2>About Info</h2>
+<md-card>
+    <md-input-container>
+        <label for="about">About Info</label>
+        <textarea id="about" ng-model="admin.about.$value"></textarea>
+    </md-input-container>
+    <md-button ng-click="admin.saveAbout(admin.about.$value)">Save About Info</md-button>
+</md-card>
