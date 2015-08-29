@@ -5,12 +5,13 @@
     <input type="text" ng-model="admin.search.name"/>
 </md-input-container>
 <md-subheader>
-    <md-button class="raised" ng-show="!admin.show.add" ng-click="admin.show.add = !admin.show.add">Add Words</md-button>
-    <md-button class="raised" ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button>
+    <md-button class="md-raised fa fa-plus" ng-show="!admin.show.add" ng-click="admin.show.add = !admin.show.add"> Add Words</md-button>
+    <md-button class="" ng-show="admin.show.add" ng-click="admin.show.add = !admin.show.add">Edit Words</md-button>
 </md-subheader>
 <form ng-show="admin.show.add" name="wordForm"
       ng-submit="admin.add(wordForm); wordForm = {}; wordForm.definitions = [{d:''}]">
     <h3>Add a new word below and click 'Add to Dictionary'</h3>
+    <md-card>
     <md-input-container>
         <label>Word</label>
         <input ng-model="wordForm.name" md-maxlength="50" minlength="2">
@@ -23,7 +24,7 @@
     <div ng-repeat="def in wordForm.definitions">
         <md-card>
             <md-input-container>
-                <label>Enter Definition {{$index+1}}</label>
+                <label>Enter WZ{{$index+1}}</label>
                 <textarea ng-model="wordForm.definitions[$index].d" md-maxlength="1200"></textarea>
                 <!--<div ng-messages="wordForm.definitions[$index].$error" ng-show="wordForm.definitions[$index].$dirty">
                     <div ng-message="md-maxlength">That's too long!</div>
@@ -45,51 +46,67 @@
             Publish
         </md-switch>
     </md-input-container>
-    <button type="submit" class="md-button">Add to Dictionary</button>
+    <h2><button type="submit" class="fa fa-check md-button md-raised"> Add to Dictionary</button></h2>
+</md-card>
 </form>
 <h3 ng-show="admin.search.name">Edit Words</h3>
-<md-list>
-    <md-card ng-repeat="word in admin.wordsArray | filter:admin.search" ng-if="admin.search" ng-if="admin.search && admin.search.name.length > 0 && (admin.search.name[0] | uppercase) === (word.name[0] | uppercase)">
-        <md-list-item class="md-2-line">
+<div class="row">
+    <md-list>
+    <md-list-item ng-repeat="word in admin.wordsArray | filter:admin.search" ng-if="admin.search && admin.search.name != '' && (admin.search.name[0] | uppercase) === (word.name[0] | uppercase)">
+        <md-card>
 
             <div>
                 <md-input-container>
-                    <label>Word Name</label>
                     <h2><input type="text" ng-model="word.name"/></h2>
                 </md-input-container>
+                <md-button>
+                    <i class="fa fa-close" ng-click="show.remove = !show.remove" ng-show="!show.remove">Remove Word</i>
+                    <i class="fa fa-close" ng-show="show.remove" ng-click="admin.remove(word.$id)">Really Remove Word</i>
+                </md-button>
+                <md-button ng-click="admin.save(word.$id, word)" class="md-raised">
+                    <i class="fa fa-check"> Save Changes</i>
+                </md-button>
 
-                <div ng-repeat="def in word.definitions">
+                <div ng-repeat="def in word.definitions"><md-card>
                     <md-input-container>
-                        <label>Definition {{$index+1}}</label>
+                        <label>WZ{{$index+1}}</label>
                         <input type="text" ng-model="def.d"/>
                     </md-input-container>
-                    <a class="fa fa-close" ng-click="word.definitions.splice($index,1)">
-                        Remove this definition
+                    <a ng-hide="show.removeDef" class="md-button" ng-click="show.removeDef = !show.removeDef"><i class="fa fa-close"></i>
                     </a>
-                    <a ng-if="$first || word.definitions.length===0" ng-click="word.definitions.push({d:''})" class="md-raised">
+                    <a ng-show="show.removeDef" class="md-button" ng-click="word.definitions.splice($index,1)">
+                        <i class="fa fa-close "> Click again to remove definition</i>
+                    </a>
+                </md-card>
+                    <a ng-if="$last || word.definitions.length===0" ng-click="word.definitions.push({d:''})" class="md-button md-raised">
                         <i class="fa fa-plus-square"> Add Another Definition</i>
-                    </a>
-                </div>
-                <code>Created on {{word.created}}</code>
+                    </a></div>
+                <code>Created on {{word.created | date}}</code>
             </div>
-            <div class="row"><md-button>
-                <i class="fa fa-close" ng-click="show.remove = !show.remove" ng-show="!show.remove">Remove Word</i>
-                <i class="fa fa-close" ng-show="show.remove" ng-click="admin.remove(word.$id)">Really Remove Word</i>
-            </md-button>
-            <md-button>
-                <i class="fa fa-close" ng-click="admin.save(word.$id, word)"> Save Changes</i>
-            </md-button></div>
-        </md-list-item>
-        <md-switch ng-model="word.published">
-            Publish
-        </md-switch>
-    </md-card>
+            <md-switch ng-model="word.published">
+                Publish
+            </md-switch>
+        </md-card>
+    </md-list-item>
 </md-list>
+</div>
 <h2>About Info</h2>
 <md-card>
     <md-input-container>
         <label for="about">About Info</label>
         <textarea id="about" ng-model="admin.about.$value"></textarea>
     </md-input-container>
-    <md-button ng-click="admin.saveAbout(admin.about.$value)">Save About Info</md-button>
+    <md-button ng-click="admin.saveAbout(admin.about.$value)" class="md-raised"><i class="fa fa-check"> Save About Info</i></md-button>
 </md-card>
+
+<h2 ng-show="admin.show.listAll" ng-click="admin.show.listAll =! admin.show.listAll">Listing All Words Alphabetically</h2>
+<md-button ng-hide="admin.show.listAll" ng-click="admin.show.listAll =! admin.show.listAll">
+    <h2>Show All Words?</h2>
+</md-button>
+<md-list ng-if="admin.show.listAll">
+    <p>Click on any word in the list, then scroll up to edit and save.</p>
+
+    <md-list-item ng-repeat="word in admin.wordsArray | orderBy:'name'">
+        <a ng-click="admin.search.name = word.name">{{word.name}}</a>
+    </md-list-item>
+</md-list>

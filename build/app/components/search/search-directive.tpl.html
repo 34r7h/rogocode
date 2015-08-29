@@ -1,9 +1,31 @@
-<md-input-container>
-    <label>Search Words</label>
-    <input type="text" ng-model="search.search.name"/>
-</md-input-container>
+<md-card>
+    <h3>Start by typing a word below or touch a letter.</h3>
+    <md-input-container>
+        <label>Search Words</label>
+        <input type="text" ng-model="search.search.name"/>
+    </md-input-container>
+</md-card>
+
+
+<md-list>
+    <md-list-item ng-repeat="word in search.wordsArray | filter:search.search"
+             ng-if="search.search && word.published && search.search.name != '' && (search.search.name[0] | uppercase) === (word.name[0] | uppercase)">
+        <md-card class="md-2-line">
+            <div>
+                <md-input-container>
+                    <h2>{{word.name}}</h2>
+                </md-input-container>
+                <div ng-repeat="def in word.definitions">
+                    WZ{{$index+1}}: <b>{{def.d}}</b>
+                </div>
+            </div>
+
+        </md-card>
+    </md-list-item>
+</md-list>
+
 <div class="row">
-    <md-grid-list md-cols="7" md-row-height="2:1" ng-show="!search.search.name || search.search.name === ''">
+    <md-grid-list md-cols="7" md-row-height="2:1">
         <md-grid-tile ng-repeat="letter in search.alphabet" ng-click="search.search.name = letter">
             {{letter}}</md-grid-tile>
     </md-grid-list>
@@ -11,19 +33,3 @@
         {{letter}}
     </md-button>-->
 </div>
-<md-list>
-    <md-card ng-repeat="word in search.wordsArray | filter:search.search"
-             ng-if="search.search && word.published && search.search.name != '' && (search.search.name[0] | uppercase) === (word.name[0] | uppercase)">
-        <md-list-item class="md-2-line">
-            <div>
-                <md-input-container>
-                    <h2>{{word.name}}</h2>
-                </md-input-container>
-                <div ng-repeat="def in word.definitions">
-                    {{$index+1}}: <b>{{def.d}}</b>
-                </div>
-            </div>
-
-        </md-list-item>
-    </md-card>
-</md-list>
