@@ -85,14 +85,11 @@ var fbAbout = new Firebase('https://rogocode.firebaseio.com/about');
           var object = object;
           var obj = $firebaseObject(fbWords).$loaded().then(function (words) {
             console.log('save words', words);
+            console.log('published', object.published);
             console.debug(id, object);
             words[id] = object;
-            words.$save().then(function (ref) {
-              ref.key() === obj.$id; // true
-              console.log('saved', ref);
-            }, function (error) {
-              console.log("Error:", error);
-            });
+            words[id].published = object.published;
+            words.$save();
           });
         },
         saveAbout: function saveAbout(blurb) {
