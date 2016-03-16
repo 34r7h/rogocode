@@ -11,7 +11,6 @@
       'ngMaterial',
       'ngSanitize',
       'ui.router',
-      'home',
       'firebase',
       'ng.deviceDetector',
       'textAngular'

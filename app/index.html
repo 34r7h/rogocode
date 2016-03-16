@@ -16,13 +16,18 @@
   <style>
     input, textarea {font-size: 2em}
   </style>
+  <div ng-if="$root.show.appStoreLink" ng-style="{display:'flex', justifyContent: 'center', textAlign:'center', width:'100vw', height:'100vh'}">
+    Get the app!
+  </div>
   <div layout="column" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
         <span>Rogocode</span>
 
         <!-- fill up the space between left and right area -->
-        <span flex></span>
+        <a flex ng-if="$root.device.os !== 'ios' && $root.device.browser !== 'unknown'" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
+          <md-button>Install the iOS app</md-button>
+        </a>
         <md-button ui-sref="search" class="">
           Search
         </md-button>

@@ -37,8 +37,12 @@ var fb = new Firebase('https://rogo.firebaseio.com/'),
           console.log(arg);
         }) : console.log(args);
       };
+      $rootScope.show = {};
       $rootScope.device = deviceDetector;
-      console.log($rootScope.device);
+      $rootScope.device.os === 'ios' && $rootScope.device.browser !== 'unknown' ? $rootScope.show.appStoreLink = true : null;
+      setTimeout(function () {
+        console.log($rootScope.device);$rootScope.show.appStoreLink = false;
+      }, 15000);
       this.data = data;
       this.dataWords = dataWords;
       this.dataArray = dataArray;
