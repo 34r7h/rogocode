@@ -57,4 +57,4 @@
     };
   }
 })();
-//# sourceMappingURL=../../components/admin/admin-directive.js.map
+//# sourceMappingURL=admin-directive.js.map

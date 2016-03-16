@@ -10,4 +10,4 @@
    */
   angular.module('home', ['ui.router']);
 })();
-//# sourceMappingURL=../home/home-module.js.map
+//# sourceMappingURL=home-module.js.map
