@@ -42,4 +42,4 @@
     };
   }
 })();
-//# sourceMappingURL=../../components/about/about-directive.js.map
+//# sourceMappingURL=about-directive.js.map

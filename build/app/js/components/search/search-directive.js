@@ -46,4 +46,4 @@
     };
   }
 })();
-//# sourceMappingURL=../../components/search/search-directive.js.map
+//# sourceMappingURL=search-directive.js.map

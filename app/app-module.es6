@@ -9,8 +9,11 @@
   angular
     .module('rogocode', [
       'ngMaterial',
+      'ngSanitize',
       'ui.router',
       'home',
-      'firebase'
+      'firebase',
+      'ng.deviceDetector',
+      'textAngular'
     ]);
 }());

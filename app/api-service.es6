@@ -1,14 +1,11 @@
-let fb = new Firebase('https://rogocode.firebaseio.com/');
-let fbWords = new Firebase('https://rogocode.firebaseio.com/words');
-let fbAbout = new Firebase('https://rogocode.firebaseio.com/about');
+let fb = new Firebase('https://rogo.firebaseio.com/'), fbWords = new Firebase('https://rogo.firebaseio.com/words'), fbAbout = new Firebase('https://rogo.firebaseio.com/about');
 
 (function () {
   'use strict';
 
   class Api {
-    constructor($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope) {
-      let authObj = $firebaseAuth(fb);
-      let authData = authObj.$getAuth();
+    constructor($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, deviceDetector) {
+      let authObj = $firebaseAuth(fb), authData = authObj.$getAuth();
 
       if (authData) {
         console.log("Logged in as:", authData.uid);
@@ -18,16 +15,14 @@ let fbAbout = new Firebase('https://rogocode.firebaseio.com/about');
         $rootScope.auth = null;
 
       }
-      let data = $firebaseObject(fb);
-      let dataWords = $firebaseObject(fbWords);
-      let dataArray = $firebaseArray(fb);
-      let wordsArray = $firebaseArray(fb.child('words'));
-      let about = $firebaseObject(fbAbout);
+      let data = $firebaseObject(fb), dataWords = $firebaseObject(fbWords), dataArray = $firebaseArray(fb), wordsArray = $firebaseArray(fb.child('words')), about = $firebaseObject(fbAbout);
       this.log = (args)=>{
         typeof args !== 'string' && typeof args !== 'number' ?
           angular.forEach(args, (arg)=>{console.log(arg);}) :
           console.log(args);
       };
+      $rootScope.device = deviceDetector;
+      console.log($rootScope.device);
       this.data = data;
       this.dataWords = dataWords;
       this.dataArray = dataArray;

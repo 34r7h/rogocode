@@ -1,6 +1,6 @@
 <md-card>
     <h2>About this app</h2>
-    <p>{{about.about.$value}}</p>
+    <p ng-bind-html="about.about.$value"></p>
 </md-card>
 <md-button ng-click="show.login = !show.login" ng-show="!$root.auth">Click to Sign in</md-button>
 <md-button ng-click="about.logout()" ng-show="$root.auth">Logout</md-button>

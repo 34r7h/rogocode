@@ -23,4 +23,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   angular.module('home').controller('HomeCtrl', HomeCtrl);
 })();
-//# sourceMappingURL=../home/home-controller.js.map
+//# sourceMappingURL=home-controller.js.map
