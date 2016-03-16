@@ -13,20 +13,24 @@
     <link rel="stylesheet" href="vendor/textAngular/dist/textAngular.css">
     <!-- endbower -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="css/home/home.css">
     <!-- endinject -->
   </head>
   <body>
   <style>
     input, textarea {font-size: 2em}
   </style>
+  <div ng-if="$root.show.appStoreLink" ng-style="{display:'flex', justifyContent: 'center', textAlign:'center', width:'100vw', height:'100vh'}">
+    Get the app!
+  </div>
   <div layout="column" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
         <span>Rogocode</span>
 
         <!-- fill up the space between left and right area -->
-        <span flex></span>
+        <a flex ng-if="$root.device.os !== 'ios' && $root.device.browser !== 'unknown'" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
+          <md-button>Install the iOS app</md-button>
+        </a>
         <md-button ui-sref="search" class="">
           Search
         </md-button>
@@ -77,15 +81,12 @@
     <script src="vendor/textAngular/dist/textAngularSetup.js"></script>
     <!-- endbower -->
     <!-- inject:js -->
-    <script src="js/home/home-module.js"></script>
-    <script src="js/home/home-routes.js"></script>
-    <script src="js/home/home-controller.js"></script>
     <script src="js/app-module.js"></script>
-    <script src="js/app-routes.js"></script>
-    <script src="js/api-service.js"></script>
     <script src="js/components/search/search-directive.js"></script>
     <script src="js/components/admin/admin-directive.js"></script>
     <script src="js/components/about/about-directive.js"></script>
+    <script src="js/app-routes.js"></script>
+    <script src="js/api-service.js"></script>
     <!-- endinject -->
   </body>
 </html>
