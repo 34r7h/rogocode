@@ -60,9 +60,9 @@
     </md-content>
   </div>
   <md-toolbar style="position:fixed; bottom:0" ng-if="($root.device.os === 'ios' && $root.device.browser !== 'unknown')">
-    <a flex href="https://itunes.apple.com/app/id993204452" style="text-align: center">
+    <md-button flex href="https://itunes.apple.com/app/id993204452" style="text-align: center">
       Get the iOS app
-    </a>
+    </md-button>
   </md-toolbar>
 
 
@@ -92,8 +92,8 @@
     <!-- endbower -->
     <!-- inject:js -->
     <script src="js/app-module.js"></script>
-    <script src="js/components/admin/admin-directive.js"></script>
     <script src="js/components/search/search-directive.js"></script>
+    <script src="js/components/admin/admin-directive.js"></script>
     <script src="js/components/about/about-directive.js"></script>
     <script src="js/app-routes.js"></script>
     <script src="js/api-service.js"></script>
