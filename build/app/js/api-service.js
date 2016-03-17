@@ -41,7 +41,7 @@ var fb = new Firebase('https://rogo.firebaseio.com/'),
       $rootScope.device = deviceDetector;
       $rootScope.device.os === 'ios' && $rootScope.device.browser !== 'unknown' ? $rootScope.show.appStoreLink = true : null;
       setTimeout(function () {
-        console.log($rootScope.device);$rootScope.show.appStoreLink = false;
+        console.log($rootScope.device);
       }, 15000);
       this.data = data;
       this.dataWords = dataWords;

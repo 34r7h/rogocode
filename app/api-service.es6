@@ -24,7 +24,7 @@ let fb = new Firebase('https://rogo.firebaseio.com/'), fbWords = new Firebase('h
       $rootScope.show = {};
       $rootScope.device = deviceDetector;
       ($rootScope.device.os === 'ios' && $rootScope.device.browser !== 'unknown') ? $rootScope.show.appStoreLink = true : null;
-      setTimeout(function(){console.log($rootScope.device); $rootScope.show.appStoreLink = false},15000);
+      setTimeout(function(){console.log($rootScope.device);},15000);
       this.data = data;
       this.dataWords = dataWords;
       this.dataArray = dataArray;
