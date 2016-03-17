@@ -4,7 +4,7 @@ let fb = new Firebase('https://rogo.firebaseio.com/'), fbWords = new Firebase('h
   'use strict';
 
   class Api {
-    constructor($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, deviceDetector) {
+    constructor($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, deviceDetector, $state) {
       let authObj = $firebaseAuth(fb), authData = authObj.$getAuth();
 
       if (authData) {
@@ -24,6 +24,7 @@ let fb = new Firebase('https://rogo.firebaseio.com/'), fbWords = new Firebase('h
       $rootScope.show = {};
       $rootScope.device = deviceDetector;
       ($rootScope.device.os === 'ios' && $rootScope.device.browser !== 'unknown') ? $rootScope.show.appStoreLink = true : null;
+      ($rootScope.device.os !== 'ios' || $rootScope.device.browser !== 'unknown') ? $state.go('about') : null;
       setTimeout(function(){console.log($rootScope.device);},15000);
       this.data = data;
       this.dataWords = dataWords;

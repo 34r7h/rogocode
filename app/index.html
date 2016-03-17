@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang='en' data-ng-app='rogocode'>
-  <head>
+<head>
     <title>rogocode</title>
     <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'>
     <!-- inject:head:js -->
@@ -11,65 +11,75 @@
     <!-- endbower -->
     <!-- inject:css -->
     <!-- endinject -->
-  </head>
-  <body>
-  <style>
-    input, textarea {font-size: 2em}
-  </style>
-  <div ng-if="$root.show.appStoreLink" ng-style="{position:'fixed', display:'flex', justifyContent: 'space-around', alignItems:'center', flexDirection:'column', width:'100vw', height:'100vh', background:'white', zIndex:9999}">
-    <a href="https://itunes.apple.com/us/app/id993204452">
-      <md-button style="background: #5068c2; color:white">
-        <h1>Get the app!</h1>
-      </md-button>
-    </a>
-    <md-button ng-click="$root.show.appStoreLink = false">Continue to website</md-button>
-  </div>
-  <div layout="column" layout-fill>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <span>Rogocode</span>
+</head>
+<body>
+<style>
+    input, textarea {
+        font-size: 2em;
+    }
 
-        <!-- fill up the space between left and right area -->
-        <a flex ng-if="($root.device.os !== 'ios')" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
-          <md-button>Get the iOS app</md-button>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+<div ng-cloak>
+    <div ng-if="$root.show.appStoreLink"
+         ng-style="{position:'fixed', display:'flex', justifyContent: 'space-around', alignItems:'center', flexDirection:'column', width:'100vw', height:'100vh', background:'white', zIndex:9999}">
+        <a href="https://itunes.apple.com/app/id993204452">
+            <md-button style="background: #5068c2; color:white">
+                <h1>Get the app!</h1>
+            </md-button>
         </a>
-        <md-button ui-sref="search" class="">
-          Search
-        </md-button>
-        <md-button ui-sref="admin" class="" ng-show="$root.auth">
-          Admin
-        </md-button>
-        <md-button ui-sref="about" class="">
-          About
-        </md-button>
-      </div>
-    </md-toolbar>
-    <md-content>
+        <md-button ng-click="$root.show.appStoreLink = false">Continue to website</md-button>
+    </div>
+    <div layout="column" layout-fill>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span>Rogocode</span>
 
-      <div layout="row">
-        <div flex data-ui-view>
+                <!-- fill up the space between left and right area -->
+                <a flex ng-if="($root.device.os !== 'ios')" href="https://itunes.apple.com/app/id993204452"
+                   style="text-align: center">
+                    <md-button>Get the iOS app</md-button>
+                </a>
+                <md-button ui-sref="search" class="">
+                    Search
+                </md-button>
+                <md-button ui-sref="admin" class="" ng-show="$root.auth">
+                    Admin
+                </md-button>
+                <md-button ui-sref="about" class="">
+                    About
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content>
 
-        </div>
+            <div layout="row">
+                <div flex data-ui-view>
 
-      </div>
+                </div>
 
-
-    </md-content>
-  </div>
-  <div ng-if="($root.device.os === 'ios' && $root.device.browser !== 'unknown')">
-    <br><br>
-
-  <md-toolbar style="position:fixed; bottom:0">
-    <md-button flex href="https://itunes.apple.com/app/id993204452" style="text-align: center">
-      Get the iOS app
-    </md-button>
-  </md-toolbar></div>
+            </div>
 
 
+        </md-content>
+    </div>
+    <div ng-if="($root.device.os === 'ios' && $root.device.browser !== 'unknown')">
+        <br><br>
 
-    <!-- bower:js -->
-    <!-- endbower -->
-    <!-- inject:js -->
-    <!-- endinject -->
-  </body>
+        <md-toolbar style="position:fixed; bottom:0">
+            <md-button flex href="https://itunes.apple.com/app/id993204452" style="text-align: center">
+                Get the iOS app
+            </md-button>
+        </md-toolbar>
+    </div>
+</div>
+
+
+<!-- bower:js -->
+<!-- endbower -->
+<!-- inject:js -->
+<!-- endinject -->
+</body>
 </html>

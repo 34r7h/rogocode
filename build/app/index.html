@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang='en' data-ng-app='rogocode'>
-  <head>
+<head>
     <title>rogocode</title>
     <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'>
     <!-- inject:head:js -->
@@ -14,92 +14,102 @@
     <!-- endbower -->
     <!-- inject:css -->
     <!-- endinject -->
-  </head>
-  <body>
-  <style>
-    input, textarea {font-size: 2em}
-  </style>
-  <div ng-if="$root.show.appStoreLink" ng-style="{position:'fixed', display:'flex', justifyContent: 'space-around', alignItems:'center', flexDirection:'column', width:'100vw', height:'100vh', background:'white', zIndex:9999}">
-    <a href="https://itunes.apple.com/us/app/id993204452">
-      <md-button style="background: #5068c2; color:white">
-        <h1>Get the app!</h1>
-      </md-button>
-    </a>
-    <md-button ng-click="$root.show.appStoreLink = false">Continue to website</md-button>
-  </div>
-  <div layout="column" layout-fill>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <span>Rogocode</span>
+</head>
+<body>
+<style>
+    input, textarea {
+        font-size: 2em;
+    }
 
-        <!-- fill up the space between left and right area -->
-        <a flex ng-if="($root.device.os !== 'ios')" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
-          <md-button>Get the iOS app</md-button>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+<div ng-cloak>
+    <div ng-if="$root.show.appStoreLink"
+         ng-style="{position:'fixed', display:'flex', justifyContent: 'space-around', alignItems:'center', flexDirection:'column', width:'100vw', height:'100vh', background:'white', zIndex:9999}">
+        <a href="https://itunes.apple.com/app/id993204452">
+            <md-button style="background: #5068c2; color:white">
+                <h1>Get the app!</h1>
+            </md-button>
         </a>
-        <md-button ui-sref="search" class="">
-          Search
-        </md-button>
-        <md-button ui-sref="admin" class="" ng-show="$root.auth">
-          Admin
-        </md-button>
-        <md-button ui-sref="about" class="">
-          About
-        </md-button>
-      </div>
-    </md-toolbar>
-    <md-content>
+        <md-button ng-click="$root.show.appStoreLink = false">Continue to website</md-button>
+    </div>
+    <div layout="column" layout-fill>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span>Rogocode</span>
 
-      <div layout="row">
-        <div flex data-ui-view>
+                <!-- fill up the space between left and right area -->
+                <a flex ng-if="($root.device.os !== 'ios')" href="https://itunes.apple.com/app/id993204452"
+                   style="text-align: center">
+                    <md-button>Get the iOS app</md-button>
+                </a>
+                <md-button ui-sref="search" class="">
+                    Search
+                </md-button>
+                <md-button ui-sref="admin" class="" ng-show="$root.auth">
+                    Admin
+                </md-button>
+                <md-button ui-sref="about" class="">
+                    About
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content>
 
-        </div>
+            <div layout="row">
+                <div flex data-ui-view>
 
-      </div>
+                </div>
 
-
-    </md-content>
-  </div>
-  <div ng-if="($root.device.os === 'ios' && $root.device.browser !== 'unknown')">
-    <br><br>
-
-  <md-toolbar style="position:fixed; bottom:0">
-    <md-button flex href="https://itunes.apple.com/app/id993204452" style="text-align: center">
-      Get the iOS app
-    </md-button>
-  </md-toolbar></div>
+            </div>
 
 
+        </md-content>
+    </div>
+    <div ng-if="($root.device.os === 'ios' && $root.device.browser !== 'unknown')">
+        <br><br>
 
-    <!-- bower:js -->
-    <script src="vendor/angular/angular.js"></script>
-    <script src="vendor/angular-touch/angular-touch.js"></script>
-    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="vendor/angular-animate/angular-animate.js"></script>
-    <script src="vendor/angular-aria/angular-aria.js"></script>
-    <script src="vendor/angular-material/angular-material.js"></script>
-    <script src="vendor/angular-messages/angular-messages.js"></script>
-    <script src="vendor/firebase/firebase.js"></script>
-    <script src="vendor/angularfire/dist/angularfire.js"></script>
-    <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
-    <script src="vendor/re-tree/re-tree.js"></script>
-    <script src="vendor/ng-device-detector/ng-device-detector.js"></script>
-    <script src="vendor/rangy/rangy-core.js"></script>
-    <script src="vendor/rangy/rangy-classapplier.js"></script>
-    <script src="vendor/rangy/rangy-highlighter.js"></script>
-    <script src="vendor/rangy/rangy-selectionsaverestore.js"></script>
-    <script src="vendor/rangy/rangy-serializer.js"></script>
-    <script src="vendor/rangy/rangy-textrange.js"></script>
-    <script src="vendor/textAngular/dist/textAngular.js"></script>
-    <script src="vendor/textAngular/dist/textAngular-sanitize.js"></script>
-    <script src="vendor/textAngular/dist/textAngularSetup.js"></script>
-    <!-- endbower -->
-    <!-- inject:js -->
-    <script src="js/app-module.js"></script>
-    <script src="js/components/search/search-directive.js"></script>
-    <script src="js/components/admin/admin-directive.js"></script>
-    <script src="js/components/about/about-directive.js"></script>
-    <script src="js/app-routes.js"></script>
-    <script src="js/api-service.js"></script>
-    <!-- endinject -->
-  </body>
+        <md-toolbar style="position:fixed; bottom:0">
+            <md-button flex href="https://itunes.apple.com/app/id993204452" style="text-align: center">
+                Get the iOS app
+            </md-button>
+        </md-toolbar>
+    </div>
+</div>
+
+
+<!-- bower:js -->
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-touch/angular-touch.js"></script>
+<script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="vendor/angular-animate/angular-animate.js"></script>
+<script src="vendor/angular-aria/angular-aria.js"></script>
+<script src="vendor/angular-material/angular-material.js"></script>
+<script src="vendor/angular-messages/angular-messages.js"></script>
+<script src="vendor/firebase/firebase.js"></script>
+<script src="vendor/angularfire/dist/angularfire.js"></script>
+<script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+<script src="vendor/re-tree/re-tree.js"></script>
+<script src="vendor/ng-device-detector/ng-device-detector.js"></script>
+<script src="vendor/rangy/rangy-core.js"></script>
+<script src="vendor/rangy/rangy-classapplier.js"></script>
+<script src="vendor/rangy/rangy-highlighter.js"></script>
+<script src="vendor/rangy/rangy-selectionsaverestore.js"></script>
+<script src="vendor/rangy/rangy-serializer.js"></script>
+<script src="vendor/rangy/rangy-textrange.js"></script>
+<script src="vendor/textAngular/dist/textAngular.js"></script>
+<script src="vendor/textAngular/dist/textAngular-sanitize.js"></script>
+<script src="vendor/textAngular/dist/textAngularSetup.js"></script>
+<!-- endbower -->
+<!-- inject:js -->
+<script src="js/app-module.js"></script>
+<script src="js/components/search/search-directive.js"></script>
+<script src="js/components/admin/admin-directive.js"></script>
+<script src="js/components/about/about-directive.js"></script>
+<script src="js/app-routes.js"></script>
+<script src="js/api-service.js"></script>
+<!-- endinject -->
+</body>
 </html>
