@@ -16,9 +16,9 @@
   <style>
     input, textarea {font-size: 2em}
   </style>
-  <div ng-if="$root.show.appStoreLink" ng-style="{position:'fixed', display:'flex', justifyContent: 'center', alignItems:'center', flexDirection:'column', width:'100vw', height:'100vh', background:'white', zIndex:9999}">
-    <md-button style="background: #5068c2"><h1>Get the app!</h1></md-button>
-    <a ng-click="$root.show.appStoreLink = false">Close</a>
+  <div ng-if="$root.show.appStoreLink" ng-style="{position:'fixed', display:'flex', justifyContent: 'space-around', alignItems:'center', flexDirection:'column', width:'100vw', height:'100vh', background:'white', zIndex:9999}">
+    <md-button style="background: #5068c2; color:white"><h1>Get the app!</h1></md-button>
+    <a ng-click="$root.show.appStoreLink = false">Continue to website</a>
   </div>
   <div layout="column" layout-fill>
     <md-toolbar>
