@@ -33,7 +33,10 @@
         <span>Rogocode</span>
 
         <!-- fill up the space between left and right area -->
-        <a flex ng-if="$root.device.os !== 'ios' && $root.device.browser !== 'unknown'" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
+        <a flex ng-if="($root.device.os !== 'ios')" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
+          <md-button>Get the iOS app</md-button>
+        </a>
+        <a flex ng-if="($root.device.os === 'ios' && $root.device.browser !== 'unknown')" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
           <md-button>Get the iOS app</md-button>
         </a>
         <md-button ui-sref="search" class="">
@@ -87,9 +90,9 @@
     <!-- endbower -->
     <!-- inject:js -->
     <script src="js/app-module.js"></script>
-    <script src="js/components/about/about-directive.js"></script>
     <script src="js/components/search/search-directive.js"></script>
     <script src="js/components/admin/admin-directive.js"></script>
+    <script src="js/components/about/about-directive.js"></script>
     <script src="js/app-routes.js"></script>
     <script src="js/api-service.js"></script>
     <!-- endinject -->
