@@ -17,7 +17,7 @@
     input, textarea {font-size: 2em}
   </style>
   <div ng-if="$root.show.appStoreLink" ng-style="{position:'fixed', display:'flex', justifyContent: 'space-around', alignItems:'center', flexDirection:'column', width:'100vw', height:'100vh', background:'white', zIndex:9999}">
-    <a href="https://itunes.apple.com/us/app/id993204452?mt=8">
+    <a href="https://itunes.apple.com/us/app/id993204452">
       <md-button style="background: #5068c2; color:white">
         <h1>Get the app!</h1>
       </md-button>
@@ -31,7 +31,7 @@
 
         <!-- fill up the space between left and right area -->
         <a flex ng-if="$root.device.os !== 'ios' && $root.device.browser !== 'unknown'" href="https://itunes.apple.com/us/app/id993204452?mt=8" style="text-align: center">
-          <md-button>Install the iOS app</md-button>
+          <md-button>Get the iOS app</md-button>
         </a>
         <md-button ui-sref="search" class="">
           Search
