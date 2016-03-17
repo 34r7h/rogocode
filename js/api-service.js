@@ -12,7 +12,7 @@ var fb = new Firebase('https://rogo.firebaseio.com/'),
   'use strict';
 
   var Api = (function () {
-    function Api($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, deviceDetector) {
+    function Api($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, deviceDetector, $state) {
       var _this = this;
 
       _classCallCheck(this, Api);
@@ -40,6 +40,7 @@ var fb = new Firebase('https://rogo.firebaseio.com/'),
       $rootScope.show = {};
       $rootScope.device = deviceDetector;
       $rootScope.device.os === 'ios' && $rootScope.device.browser !== 'unknown' ? $rootScope.show.appStoreLink = true : null;
+      $rootScope.device.os !== 'ios' || $rootScope.device.browser !== 'unknown' ? $state.go('about') : null;
       setTimeout(function () {
         console.log($rootScope.device);
       }, 15000);
