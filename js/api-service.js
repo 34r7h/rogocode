@@ -4,9 +4,9 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var fb = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogo.firebaseio.com/' : 'https://rogo.firebaseio.com/test'),
-    fbWords = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogo.firebaseio.com/words' : 'https://rogo.firebaseio.com/test/words'),
-    fbAbout = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogo.firebaseio.com/about' : 'https://rogo.firebaseio.com/test/about');
+var fb = new Firebase('https://rogo.firebaseio.com/'),
+    fbWords = new Firebase('https://rogo.firebaseio.com/words'),
+    fbAbout = new Firebase('https://rogo.firebaseio.com/about');
 console.log(window.location.host);
 (function () {
   'use strict';
@@ -45,8 +45,6 @@ console.log(window.location.host);
         console.log($rootScope.device);
       }, 15000);
       this.data = data;
-      data.test = { words: dataWords, about: about };
-      data.$save();
       this.dataWords = dataWords;
       this.dataArray = dataArray;
       this.wordsArray = wordsArray;
