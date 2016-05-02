@@ -1,5 +1,5 @@
-let fb = new Firebase('https://rogo.firebaseio.com/'), fbWords = new Firebase('https://rogo.firebaseio.com/words'), fbAbout = new Firebase('https://rogo.firebaseio.com/about');
-console.log(window.location);
+let fb = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogo.firebaseio.com/' : 'https://rogo.firebaseio.com/test'), fbWords = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogo.firebaseio.com/words' : 'https://rogo.firebaseio.com/test/words'), fbAbout = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogo.firebaseio.com/about' : 'https://rogo.firebaseio.com/test/about');
+console.log(window.location.host);
 (function () {
   'use strict';
 
