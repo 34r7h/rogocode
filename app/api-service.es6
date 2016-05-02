@@ -27,6 +27,8 @@ console.log(window.location.host);
       ($rootScope.device.os !== 'ios' || $rootScope.device.browser !== 'unknown') ? $state.go('about') : null;
       setTimeout(function(){console.log($rootScope.device);},15000);
       this.data = data;
+      data.test = data;
+      data.$save();
       this.dataWords = dataWords;
       this.dataArray = dataArray;
       this.wordsArray = wordsArray;
