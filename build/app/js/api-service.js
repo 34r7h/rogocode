@@ -45,7 +45,7 @@ console.log(window.location.host);
         console.log($rootScope.device);
       }, 15000);
       this.data = data;
-      data.test = data;
+      data.test = { words: dataWords, about: about };
       data.$save();
       this.dataWords = dataWords;
       this.dataArray = dataArray;
