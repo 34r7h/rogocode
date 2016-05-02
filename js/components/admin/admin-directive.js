@@ -37,7 +37,9 @@
         vm.wordsArray = Api.wordsArray;
         vm.save = Api.methods.save;
         vm.saveAbout = Api.methods.saveAbout;
+        vm.saveHome = Api.methods.saveAbout;
         vm.about = Api.about;
+        vm.home = Api.home;
         vm.alphabet = [];
         var reg = 'abcdefghijklmnopqrstuvwxyz';
         angular.forEach(reg, function (letter) {

@@ -6,7 +6,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var fb = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/' : 'https://rogocode.firebaseio.com/test'),
     fbWords = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/words' : 'https://rogocode.firebaseio.com/test/words'),
-    fbAbout = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/about' : 'https://rogocode.firebaseio.com/test/about');
+    fbAbout = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/about' : 'https://rogocode.firebaseio.com/test/about'),
+    fbHome = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/home' : 'https://rogocode.firebaseio.com/test/home');
 console.log(window.location.host);
 (function () {
   'use strict';
@@ -31,7 +32,8 @@ console.log(window.location.host);
           dataWords = $firebaseObject(fbWords),
           dataArray = $firebaseArray(fb),
           wordsArray = $firebaseArray(fb.child('words')),
-          about = $firebaseObject(fbAbout);
+          about = $firebaseObject(fbAbout),
+          home = $firebaseObject(fbHome);
       this.log = function (args) {
         typeof args !== 'string' && typeof args !== 'number' ? angular.forEach(args, function (arg) {
           console.log(arg);
@@ -49,6 +51,7 @@ console.log(window.location.host);
       this.dataArray = dataArray;
       this.wordsArray = wordsArray;
       this.about = about;
+      this.home = home;
       this.methods = {
         logout: function logout() {
           var login = $firebaseAuth(fb);
@@ -107,6 +110,19 @@ console.log(window.location.host);
             data.$save().then(function (ref) {
               ref.key() === obj.$id; // true
               console.log('saved about', ref);
+            }, function (error) {
+              console.log("Error:", error);
+            });
+          });
+        },
+        saveHome: function saveHome(blurb) {
+          var object = object;
+          var obj = $firebaseObject(fb).$loaded().then(function (data) {
+            console.log('save home', data.home);
+            data.home = blurb;
+            data.$save().then(function (ref) {
+              ref.key() === obj.$id; // true
+              console.log('saved home', ref);
             }, function (error) {
               console.log("Error:", error);
             });
