@@ -7,7 +7,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var fb = new Firebase('https://rogo.firebaseio.com/'),
     fbWords = new Firebase('https://rogo.firebaseio.com/words'),
     fbAbout = new Firebase('https://rogo.firebaseio.com/about');
-
+console.log(window.location);
 (function () {
   'use strict';
 

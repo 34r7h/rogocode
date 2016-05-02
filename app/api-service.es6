@@ -1,5 +1,5 @@
 let fb = new Firebase('https://rogo.firebaseio.com/'), fbWords = new Firebase('https://rogo.firebaseio.com/words'), fbAbout = new Firebase('https://rogo.firebaseio.com/about');
-
+console.log(window.location);
 (function () {
   'use strict';
 
