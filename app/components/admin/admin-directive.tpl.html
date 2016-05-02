@@ -97,6 +97,14 @@
     </md-input-container>
     <md-button ng-click="admin.saveAbout(admin.about.$value)" class="md-raised"><i class="fa fa-check"> Save About Info</i></md-button>
 </md-card>
+<h2>Homepage Info</h2>
+<md-card>
+    <md-input-container>
+        <label for="home">Home Info</label>
+        <text-angular id="home" ng-model="admin.home.$value"></text-angular>
+    </md-input-container>
+    <md-button ng-click="admin.saveHome(admin.home.$value)" class="md-raised"><i class="fa fa-check"> Save Home Info</i></md-button>
+</md-card>
 
 <h2 ng-show="admin.show.listAll" ng-click="admin.show.listAll =! admin.show.listAll">Listing All Words Alphabetically</h2>
 <md-button ng-hide="admin.show.listAll" ng-click="admin.show.listAll =! admin.show.listAll">
