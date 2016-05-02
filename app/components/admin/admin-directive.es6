@@ -37,7 +37,7 @@
         vm.wordsArray = Api.wordsArray;
         vm.save = Api.methods.save;
         vm.saveAbout = Api.methods.saveAbout;
-        vm.saveHome = Api.methods.saveAbout;
+        vm.saveHome = Api.methods.saveHome;
         vm.about = Api.about;
         vm.home = Api.home;
         vm.alphabet = [];
