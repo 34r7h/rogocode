@@ -1,4 +1,4 @@
-let fb = new Firebase('https://rogo.firebaseio.com/'), fbWords = new Firebase('https://rogo.firebaseio.com/words'), fbAbout = new Firebase('https://rogo.firebaseio.com/about');
+let fb = new Firebase('https://rogocode.firebaseio.com/'), fbWords = new Firebase('https://rogocode.firebaseio.com/words'), fbAbout = new Firebase('https://rogocode.firebaseio.com/about');
 console.log(window.location.host);
 (function () {
   'use strict';

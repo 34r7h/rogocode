@@ -4,9 +4,9 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var fb = new Firebase('https://rogo.firebaseio.com/'),
-    fbWords = new Firebase('https://rogo.firebaseio.com/words'),
-    fbAbout = new Firebase('https://rogo.firebaseio.com/about');
+var fb = new Firebase('https://rogocode.firebaseio.com/'),
+    fbWords = new Firebase('https://rogocode.firebaseio.com/words'),
+    fbAbout = new Firebase('https://rogocode.firebaseio.com/about');
 console.log(window.location.host);
 (function () {
   'use strict';
