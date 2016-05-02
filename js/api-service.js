@@ -4,9 +4,9 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var fb = new Firebase(window.location.host !== 'rogocode.heroku.com' ? 'https://rogocode.firebaseio.com/' : 'https://rogocode.firebaseio.com/test'),
-    fbWords = new Firebase(window.location.host !== 'rogocode.heroku.com' ? 'https://rogocode.firebaseio.com/words' : 'https://rogocode.firebaseio.com/test/words'),
-    fbAbout = new Firebase(window.location.host !== 'rogocode.heroku.com' ? 'https://rogocode.firebaseio.com/about' : 'https://rogocode.firebaseio.com/test/about');
+var fb = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/' : 'https://rogocode.firebaseio.com/test'),
+    fbWords = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/words' : 'https://rogocode.firebaseio.com/test/words'),
+    fbAbout = new Firebase(window.location.host !== 'rogocode.herokuapp.com' ? 'https://rogocode.firebaseio.com/about' : 'https://rogocode.firebaseio.com/test/about');
 console.log(window.location.host);
 (function () {
   'use strict';
