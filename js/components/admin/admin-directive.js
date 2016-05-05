@@ -41,6 +41,8 @@
         vm.about = Api.about;
         vm.home = Api.home;
         vm.alphabet = [];
+        vm.logout = Api.methods.logout;
+        vm.syncToApp = Api.methods.syncToApp;
         var reg = 'abcdefghijklmnopqrstuvwxyz';
         angular.forEach(reg, function (letter) {
           vm.alphabet.push(letter);
