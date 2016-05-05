@@ -4,7 +4,7 @@ console.log(window.location.host);
   'use strict';
 
   class Api {
-    constructor($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, deviceDetector, $state) {
+    constructor($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, deviceDetector, $state, $timeout, $anchorScroll) {
       let authObj = $firebaseAuth(fb), authData = authObj.$getAuth();
 
       if (authData) {
@@ -37,6 +37,8 @@ console.log(window.location.host);
           var login = $firebaseAuth(fb);
           login.$unauth();
           $rootScope.auth = null;
+          $state.go('about');
+          $anchorScroll();
         },
         login: (user, pass)=>{
           var login = $firebaseAuth(fb);
@@ -46,6 +48,8 @@ console.log(window.location.host);
           }).then(function(authData) {
             $rootScope.auth = authData.uid;
             console.log("Logged in as:", authData.uid);
+            $state.go('admin');
+            $anchorScroll();
           }).catch(function(error) {
             console.error("Authentication failed:", error);
           });
@@ -57,6 +61,29 @@ console.log(window.location.host);
             this.log('Something Missing?');
           });
           this.log(word)
+        },
+        syncToApp: ()=>{
+          var rogoRef = new Firebase('https://rogo.firebaseio.com');
+          var rogoAuth = $firebaseAuth(rogoRef);
+          rogoAuth.$authWithPassword({email: prompt('Provide email for iOS sync'), password: prompt('Your Password to confirm iOS sync')}).then((authData)=>{
+            console.log('iOS Sync Access Granted');
+            var rogoFb = $firebaseObject(rogoRef).$loaded().then((rogoData)=>{
+              rogoData.about = data.about;
+              rogoData.words = data.words;
+              rogoData.home = data.home;
+              rogoData.test = data.test;
+              rogoData.$save().then(()=>{
+                console.log('iOS Data Sync\'d');
+                $rootScope.syncd = true;
+                $timeout(()=>{
+                  $rootScope.syncd = false;
+                }, 5000);
+              });
+            })
+          });
+
+
+
         },
 /*
         saveAll: ()=>{
@@ -89,7 +116,6 @@ console.log(window.location.host);
             console.log('save about', data.about);
             data.about = blurb;
             data.$save().then(function(ref) {
-              ref.key() === obj.$id; // true
               console.log('saved about', ref);
             }, function(error) {
               console.log("Error:", error);
