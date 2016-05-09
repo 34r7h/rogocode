@@ -36,7 +36,7 @@
                             <div ng-message="md-maxlength">That's too long!</div>
                         </div>-->
                     </md-input-container>
-                    <h4>Word Definitions</h4>
+                    <h4 ng-init="wordForm.definitions = [{d:''}]">Word Definitions</h4>
 
                     <div ng-repeat="def in wordForm.definitions">
                         <md-card>
